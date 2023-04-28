@@ -6,5 +6,6 @@
 */
 bool	is_map_valid(char **map)
 {
+	(void)map;
 	return (true);
 }

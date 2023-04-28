@@ -3,12 +3,12 @@ FTSRCS			= .c
 DIRSRCS 		= srcs/program/
 SRCS_PARSING 	=	$(addsuffix .c,				\
 					$(addprefix srcs/parsing/,	\
-						map							\
+						map						\
 					))
 SRCS 			= ${SRCS_PARSING} srcs/cub3d.c
 BONUSOBJS		= ${BONUS:.c=.o}
 PATH_INCLUDES	= includes
-HEADER			= ${PATH_INCLUDES}/cub3d.h
+HEADER			= ${PATH_INCLUDES}
 LIBFTDIR		= libft
 LIBFTLIB		= -lft
 CC				= cc
@@ -24,22 +24,22 @@ CYAN			= \033[1;36m
 	@echo "\033[1A                                                          "
 	@echo -n "\033[1A"
 	@echo "${CYAN}Compiling $< ${NC}"
-	@${CC} ${FLAGS} -o $@ -c $^ -I ${HEADER}
+	@${CC} ${FLAGS} -o $@ -c $^ -I${HEADER}
 
 all: ${NAME}
 	@echo "${LGREEN}Successfully created${NC}${CYAN} ${NAME}${NC}${LGREEN}!${NC}"
 
 ${NAME}: ${OBJS} ${LIBFTDIR}/libft.a
-	@${CC} ${FLAGS} ${OBJS} -I ${HEADER} -L${LIBFTDIR} ${LIBFTLIB} -o $@ -g3
+	@${CC} ${FLAGS} ${OBJS} -I${HEADER} -L${LIBFTDIR} ${LIBFTLIB} -o $@ -g3
 
 sanitize: ${OBJS} ${LIBFTDIR}/libft.a
-	@${CC} ${FLAGS} ${OBJS} -I ${HEADER} -L${LIBFTDIR} ${LIBFTLIB} -o cub3d -g3 -fsanitize=address
+	@${CC} ${FLAGS} ${OBJS} -I${HEADER} -L${LIBFTDIR} ${LIBFTLIB} -o cub3d -g3 -fsanitize=address
 
 ${LIBFTDIR}/libft.a:
 	@make -C ${LIBFTDIR}
 
 bonus: ${BONUSOBJS} ${LIBFTDIR}/libft.a
-	@${CC} ${FLAGS} ${BONUSOBJS} ${HEADER} -L${LIBFTDIR} ${LIBFTLIB} -o checker -g3
+	@${CC} ${FLAGS} ${BONUSOBJS} ${HEADER} -L${LIBFTDIR} ${LIBFTLIB} -o cub3d -g3
 
 #----------------------------PUSH_SWAP
 
