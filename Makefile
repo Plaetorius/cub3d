@@ -1,11 +1,15 @@
 NAME			= cub3d
 FTSRCS			= .c
 DIRSRCS 		= srcs/program/
-SRCS_PARSING 	=	$(addsuffix .c,				\
+SRCS 			=	$(addsuffix .c,				\
 					$(addprefix srcs/parsing/,	\
-						map						\
-					))
-SRCS 			= ${SRCS_PARSING} srcs/cub3d.c
+						parsing						\
+					)							\
+					$(addprefix srcs/cleaning/,	\
+						errors					\
+					)							\
+						srcs/cub3d				\
+					)
 BONUSOBJS		= ${BONUS:.c=.o}
 PATH_INCLUDES	= includes
 HEADER			= ${PATH_INCLUDES}

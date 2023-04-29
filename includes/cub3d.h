@@ -21,4 +21,32 @@
 # define CYAN "\033[36m"
 
 # define SPACES " \f\n\r\t\v"
+
+typedef struct s_vars
+{
+	char			**file_content;
+	unsigned char	ceiling_color[3];
+	unsigned char	floor_color[3];
+	char			*path_north;
+	char			*path_south;
+	char			*path_east;
+	char			*path_west;
+
+}					t_vars;
+
+
+/******************************************************************************/
+/*                                                                            */
+/*                                 Parsing                                    */
+/*                                                                            */
+/******************************************************************************/
+bool	parsing(char *map_name, t_vars *vars);
+
+/******************************************************************************/
+/*                                                                            */
+/*                                 Cleaning                                   */
+/*                                                                            */
+/******************************************************************************/
+void	error_str(char *str);
+
 #endif
