@@ -3,7 +3,10 @@ FTSRCS			= .c
 DIRSRCS 		= srcs/program/
 SRCS 			=	$(addsuffix .c,				\
 					$(addprefix srcs/parsing/,	\
-						parsing						\
+						parsing					\
+						textures				\
+						map_size				\
+						map_correct				\
 					)							\
 					$(addprefix srcs/cleaning/,	\
 						errors					\

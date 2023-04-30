@@ -21,26 +21,40 @@
 # define CYAN "\033[36m"
 
 # define SPACES " \f\n\r\t\v"
+# define PLAYER "NSEW"
+# define CSET_END_LINES " 1\n"
+# define CSET_
 
-typedef struct s_vars
+typedef struct s_map
 {
-	char			**file_content;
 	unsigned char	ceiling_color[3];
 	unsigned char	floor_color[3];
 	char			*path_north;
 	char			*path_south;
 	char			*path_east;
 	char			*path_west;
+	int				param_number;
+	int				param_lines[6];
+	int				heigth;
+	int				length;
+	int				first_line;
+}					t_map;
 
+typedef struct s_vars
+{
+	char			**file_content;
+	t_map			*map;
 }					t_vars;
-
 
 /******************************************************************************/
 /*                                                                            */
 /*                                 Parsing                                    */
 /*                                                                            */
 /******************************************************************************/
-bool	parsing(char *map_name, t_vars *vars);
+bool	parsing(char *file_name, t_vars *vars, t_map *map);
+bool	get_textures_info(t_vars *vars, t_map *map);
+bool	map_size(t_vars *vars, t_map *map);
+bool	map_correct(t_vars *vars, t_map *map);
 
 /******************************************************************************/
 /*                                                                            */

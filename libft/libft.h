@@ -86,6 +86,7 @@ int		*ft_rev_int_tab(int *tab, size_t len);
 void	ft_free_ints(int **tab);
 int		**ft_ints(int len_tab, int len_tabs);
 void	ft_free_lst(t_list *head);
+int		ft_c_in_str(char c, char *str);
 
 /* PRINTF */
 int		ft_printf(const char *placeholders, ...);
