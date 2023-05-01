@@ -15,6 +15,10 @@ static void	set_to_zero(t_vars *vars, t_map *map)
 	map->param_number = 0;
 	map->heigth = 0;
 	map->length = 0;
+	map->start_coords[0] = -1;
+	map->start_coords[1] = -1;
+	map->start_direction = '\0';
+
 	vars->file_content = NULL;
 	vars->map = map;
 }

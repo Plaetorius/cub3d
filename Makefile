@@ -7,6 +7,7 @@ SRCS 			=	$(addsuffix .c,				\
 						textures				\
 						map_size				\
 						map_correct				\
+						map_creation			\
 					)							\
 					$(addprefix srcs/cleaning/,	\
 						errors					\

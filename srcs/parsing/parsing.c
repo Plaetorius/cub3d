@@ -54,12 +54,23 @@ bool	parsing(char *file_name, t_vars *vars, t_map *map)
 	ft_printf("After WE %s\n", map->path_west);
 	ft_printf("After Floor %d %d %d\n", map->floor_color[0], map->floor_color[1], map->floor_color[2]);
 	ft_printf("After Ceiling %d %d %d\n", map->ceiling_color[0], map->ceiling_color[1], map->ceiling_color[2]);
-
 	if (map_size(vars, map) == false)
 		return (false);
 	ft_printf("Map heigth %d\n", map->heigth);
 	ft_printf("Map length %d\n", map->length);
-	if (map_correct(vars, map) == false)
+	ft_printf("Start x %d\nStart y %d\n", map->start_coords[0], map->start_coords[1]);
+	ft_printf("Start Direction %c\n", map->start_direction);
+
+	// if (map_correct(vars, map) == false)
+	// 	return (false);
+	if (create_map(vars, map) == false)
+		return (false);
+	i = 0;
+	ft_printf("========================Start Map==========================\n");
+	while (map->map[i])
+		printf("%s", map->map[i++]);
+	ft_printf("=========================End Map===========================\n");
+	if (map_correct(map) == false)
 		return (false);
 	return (true);
 }

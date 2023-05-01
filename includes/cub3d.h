@@ -23,7 +23,8 @@
 # define SPACES " \f\n\r\t\v"
 # define PLAYER "NSEW"
 # define CSET_END_LINES " 1\n"
-# define CSET_
+# define FREE "0NSEW"
+# define COLLIDE "1"
 
 typedef struct s_map
 {
@@ -38,6 +39,9 @@ typedef struct s_map
 	int				heigth;
 	int				length;
 	int				first_line;
+	int				start_coords[2];
+	char			start_direction;
+	char			**map;
 }					t_map;
 
 typedef struct s_vars
@@ -54,7 +58,8 @@ typedef struct s_vars
 bool	parsing(char *file_name, t_vars *vars, t_map *map);
 bool	get_textures_info(t_vars *vars, t_map *map);
 bool	map_size(t_vars *vars, t_map *map);
-bool	map_correct(t_vars *vars, t_map *map);
+bool	map_correct(t_map *map);
+bool	create_map(t_vars *vars, t_map *map);
 
 /******************************************************************************/
 /*                                                                            */

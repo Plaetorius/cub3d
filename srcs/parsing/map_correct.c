@@ -1,36 +1,64 @@
 #include "cub3d.h"
 
-bool	line_correct(const char *line, int i, t_map *map)
+bool	line_correct(const char **map_content, int i, t_map *map)
 {
-	int	j;
+	const char		*line = map_content[i];
+	const size_t	len = ft_strlen(line);
+	int				j;
 
-	j = 1;
-	if (i == map->first_line || i == map->first_line + map->heigth - 1)
-		if (ft_strchr(line, '0') != NULL)
+	(void)len;
+	j = 0;
+	if (i == 0 || i == map->heigth - 1)
+		if (ft_strchr(line, '0') || ft_cset_in_str(PLAYER, (char *)line))
 			return (error_str("Map not closed"), false);
-	// while (line[j])
-	// {
-	// 	if (j == 0)
-	// 		return (false);
-	// 	++j;
-	// }
+	while (line[j])
+	{
+		j = 0;
+		while (!ft_c_in_str(line[j], FREE))
+			++j;
+		if (j == 0)
+		{
+			
+		}
+		else if (j == map->length)
+		{
+
+		}
+		else
+		{
+
+		}
+		++j;
+	}
 	return (true);
 }
 
-bool	map_correct(t_vars *vars, t_map *map)
+// bool	find_coords_walls(int coords[2], t_vars *vars, t_map *map)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < 2)
+// 		return (false);
+// 	return (true);
+// }
+
+bool	map_correct(t_map *map)
 {
-	const char	**content = (const char **)vars->file_content;
+	const char	**map_content = (const char **)map->map;
 	int			i;
 
-	i = map->first_line;
-	ft_printf("Map first line %s", content[map->first_line]);
-	ft_printf("Map last line %s", content[map->first_line + map->heigth - 1]);
-	while (content[i])
+	ft_printf("Map first line\n%s", map->map[0]);
+	ft_printf("Map last line\n%s", map->map[map->heigth - 1]);
+	i = 0;
+	while (map->map[i])
 	{
-	// ft_printf("--------------------Segfault-----------------\n");
-		if (line_correct(content[i], i, map) == false)
-			return (error_str("Bad map format"), false);
-		++i;
+		if (line_correct(map->map, i, map) == false)
+			return (false);
+
 	}
+
+
+
 	return (true);
 }

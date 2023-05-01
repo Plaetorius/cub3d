@@ -17,16 +17,26 @@ static bool	is_line_empty(const char *line)
 /*
 	-1 to get rid of the \n for map->length
 */
-static bool	bad_line(char *line, t_map *map)
+static bool	bad_line(char *line, int line_nb, t_map *map)
 {
 	int	i;
 
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
-		if (!ft_c_in_str(line[i], PLAYER) && !ft_c_in_str(line[i], SPACES)
-			&& !ft_c_in_str(line[i], "01"))
-			return (true);
+		if (!ft_c_in_str(line[i], SPACES) && !ft_c_in_str(line[i], "01"))
+		{
+			if (!ft_c_in_str(line[i], PLAYER))
+				return (error_str("Bad char in map"), true);
+			else
+			{
+				if (map->start_coords[0] != -1)
+					return (error_str("Too many players in map"), true);
+				map->start_coords[0] = line_nb;
+				map->start_coords[1] = i;
+				map->start_direction = line[i];
+			}
+		}
 		++i;
 	}
 	if (i > map->length)
@@ -65,8 +75,8 @@ bool	map_size(t_vars *vars, t_map *map)
 	{
 		if (!is_line_a_texture(i, map))
 		{
-			if (bad_line((char *)content[i], map))
-				return (error_str("Bad char in map"), false);
+			if (bad_line((char *)content[i], i, map))
+				return (false);
 			else if (found_first == false && !is_line_empty(content[i]))
 			{
 				found_first = true;
