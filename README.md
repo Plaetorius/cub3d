@@ -5,4 +5,4 @@ Made by tgernez x vegret
 
 **Score** : 
 <br>
-![vegret's 42 cub3d Score]()
+![tgernez's 42 cub3d Score]()
